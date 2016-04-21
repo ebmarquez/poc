@@ -1,0 +1,18 @@
+
+{% for Int_ETH_ID in INT_ETH_List %}
+
+interface Ethernet{{ INT_ETH_ID }}
+no switchport
+switchport
+{% for INT_ETH_DESC in INT_ETH_DESC_List %}
+  description  {{ INT_ETH_DESC }}
+{% endfor %}
+{% if INT_SHUTDOWN %}
+  shutdown
+{% else %}
+  no shutdown
+{% endif %}
+  switchport access vlan {{ VLAN_ID }}
+  spanning-tree port type edge
+  no logging event port link-status
+{% endfor %}

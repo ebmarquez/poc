@@ -1,0 +1,5 @@
+{% for NTP_SERVER in NTP_SERVER_LIST %}
+ntp server {{ NTP_SERVER }}  use-vrf management
+{% endfor %}
+
+Clock timezone UTC  {{ Time_HR_OFFSET }} {{ TIME_MIN_OFFSET }}

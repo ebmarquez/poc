@@ -1,0 +1,20 @@
+! Create Interface VLAN
+feature interface-vlan
+
+Vlan{{ VLAN_ID }}
+  name {{ VLAN_NAME }}
+  state active
+{% if VLAN_SHUTDOWN %}
+  shutdown
+{% else %}
+  no shutdown
+{% endif %}
+
+interface Vlan{{ VLAN_ID }}
+  Description {{ VLAN_Interface_Description }}
+{% if VLAN_SHUTDOWN %}
+  shutdown
+{% else %}
+  no shutdown
+{% endif %}
+  ip address {{ VLAN_Interface_IPv4_Address }} 

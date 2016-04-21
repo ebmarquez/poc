@@ -1,0 +1,38 @@
+router bgp {{ ROUTER_BGP_ASN }}
+  router-id {{ LOOPBACK0 }}
+  bestpath as-path multipath-relax
+  log-neighbor-changes
+  address-family ipv4 unicast
+  {% for NETWORK in BGP_NETWORKS %}
+    network {{ NETWORK }}
+{% if is_BMCTemplate %}
+  template peer TOR-IPV4-UPLINK
+    remote-as {{ TOR_BGP_ASN }}
+    address-family ipv4 unicast
+      maximum-prefix 12000 warning-only
+{% endif %}
+{% if is_TORTemplate %}
+  template peer BMC-IPV4-DOWNLINK
+    remote-as {{ BMC_BGP_ASN }}
+    address-family ipv4 unicast
+      maximum-prefix 12000 warning-only
+  tempalte peer BORDER-IPV4-UPLINK
+    remote-as {{ BORDER_BGP_ASN }}
+    address-family ipv4 unicast
+      maximum-prefix 12000 warning-only
+{% endif %}
+{% for BGP_IPV4 in BGP_IPV4_NEIGHBORS %}
+  neighbor {{ BGP_IPV4 }}
+  {% if is_BMCTemplate %}
+    inherit peer TOR-IPV4-UPLINK
+  {% for BGP_DESC in BGP_NEIGHBOR_DESC}
+    description LinkTo {{ BGP_Description }}
+  {% endfor %}
+  {% endif %}
+{% if is_TORTemplate %}
+    inherit peer BMC-IPV4-DOWNLINK
+  {% for BGP_DESC in BGP_NEIGHBOR_DESC}
+    description LinkTo {{ BGP_Description }}
+  {% endfor %}
+{% endif %}
+{% endfor %}

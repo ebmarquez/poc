@@ -1,0 +1,24 @@
+
+{% for Int_ETH_ID in INT_ETH_List %}
+
+interface Ethernet{{ INT_ETH_ID }}
+no switchport
+switchport
+{% for INT_ETH_DESC in INT_ETH_DESC_List %}
+  description  {{ INT_ETH_DESC }}
+{% endfor %}
+{% if VLAN_SHUTDOWN %}
+  shutdown
+{% else %}
+  no shutdown
+{% endif %}
+  switchport access vlan {{ VLAN_ID }}
+  spanning-tree port type edge
+  no logging event port link-status
+{% endfor %}
+  priority-flow-control mode on
+  switchport mode trunk
+  switchport trunk native vlan 12
+  switchport trunk allowed vlan 7-12
+  spanning-tree port type edge trunk
+  service-policy type queuing input {{ QOS_TAG_ID }}

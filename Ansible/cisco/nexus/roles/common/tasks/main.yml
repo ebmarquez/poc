@@ -1,0 +1,8 @@
+---
+- name: NTP Server list
+  nxos_template:
+    src: create_ntp.j2
+
+- name: SNMP settings
+  nxos_template:
+    src: create_snmp.j2
