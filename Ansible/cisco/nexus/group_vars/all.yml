@@ -6,6 +6,6 @@ password: "{{ ansible_ssh_pass }}"
 transport: cli
 
 # Varable for NTP server addresses
-NTP_Server_List: ["50.16.201.39","198.55.111.50","206.209.110.2"]
+NTP_SERVER_LIST: ["50.16.201.39","198.55.111.50","206.209.110.2"]
 Time_HR_OFFSET: -08
 TIME_MIN_OFFSET: 00
