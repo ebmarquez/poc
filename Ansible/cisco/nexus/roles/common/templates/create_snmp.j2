@@ -6,6 +6,6 @@ snmp-server location  {{ SNMP_LOCATION }}
 snmp-server community {{ SNMP_COMMUNITY_RO }} ro
 {% endfor %}
 
-{% for SNMP_COMMUNITY_RW in SNMP_COMMUNITY_RW_LIST %}
+{% for SNMP_COMMUNITY_RW in SNMP_COMMUNITY_RO_LIST %}
 snmp-server community {{ SNMP_COMMUNITY_RW }} rw
 {% endfor %}

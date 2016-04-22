@@ -1,11 +1,18 @@
 ---
-# Common
-host: "{{ ansible_host }}"
-username: "{{ ansible_ssh_user }}"
-password: "{{ ansible_ssh_pass }}"
-transport: cli
+cli:
+  # Common
+  host: "{{ ansible_host }}"
+  username: "{{ ansible_ssh_user }}"
+  password: "{{ ansible_ssh_pass }}"
+  transport: cli
 
 # Varable for NTP server addresses
 NTP_SERVER_LIST: ["50.16.201.39","198.55.111.50","206.209.110.2"]
 Time_HR_OFFSET: -08
 TIME_MIN_OFFSET: 00
+
+# Varable for SNMP settings
+SNMP_CONTACT: "Eric"
+SNMP_LOCATION: "lab"
+SNMP_COMMUNITY_RO_LIST: ["myro"]
+SNMP_COMMUNITY_RO_LIST: ["myrw"]
