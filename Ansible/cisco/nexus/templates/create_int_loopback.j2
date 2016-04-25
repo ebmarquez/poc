@@ -1,0 +1,5 @@
+{% for LOOPBACK_ID in LOOPBACK.ID %}
+interface loopback{{ LOOPBACK_ID }}
+  description {{ LOOPBACK.DESCRIPTION }}
+  ip address {{ LOOPBACK.IPV4 }}
+{% endfor %}
