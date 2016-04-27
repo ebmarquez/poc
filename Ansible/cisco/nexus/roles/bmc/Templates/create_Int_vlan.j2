@@ -14,20 +14,22 @@ VLAN.INTERFACE_IPV4_ADDRESS (string)
 
 feature interface-vlan
 
-Vlan{{ VLAN.ID }}
-  name {{ VLAN.NAME }}
+{% for v in VLAN %}
+Vlan{{ v.ID }}
+  name {{ v.NAME }}
   state active
-{% if VLAN.SHUTDOWN %}
+{% if v.SHUTDOWN %}
   shutdown
 {% else %}
   no shutdown
 {% endif %}
 
-interface Vlan{{ VLAN.ID }}
-  Description {{ VLAN.INTERFACE.DESC }}
-{% if VLAN.INTERFACE.SHUTDOWN %}
+interface Vlan{{ v.ID }}
+  Description {{ v.INTERFACE.DESC }}
+{% if v.INTERFACE.SHUTDOWN %}
   shutdown
 {% else %}
   no shutdown
 {% endif %}
-  ip address {{ VLAN.INTERFACE.IPV4.ADDRESS }} 
+  ip address {{ v.INTERFACE.IPV4.ADDRESS }} 
+{% endfor %}
