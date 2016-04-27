@@ -7,4 +7,5 @@
   connection: local
 
   roles:
-    - common
+    - bmc
+
