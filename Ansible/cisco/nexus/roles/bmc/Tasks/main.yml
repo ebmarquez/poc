@@ -1,0 +1,9 @@
+---
+- name: BMC VLAN
+  nxos_template:
+    src: create_int_vlan.j2
+    provider: "{{ cli }}"
+  register: output
+
+- name: debug
+  debug: var=output
