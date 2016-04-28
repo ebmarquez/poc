@@ -1,5 +1,15 @@
 ---
 # Setup playbook to deploy a switch NTP settings using common
+- name: Setup Common Settings
+  hosts: all
+  remote_user: admin
+  gather_facts: no
+  connection: local
+
+  roles:
+    - common
+
+# Setup BMC settings
 - name: Setup BMC switch
   hosts: all
   remote_user: admin
@@ -8,4 +18,3 @@
 
   roles:
     - bmc
-

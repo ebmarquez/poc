@@ -14,7 +14,7 @@ VLAN.INTERFACE_IPV4_ADDRESS (string)
 
 feature interface-vlan
 
-{% for v in VLAN %}
+{% for v in VLANS %}
 Vlan{{ v.ID }}
   name {{ v.NAME }}
   state active
