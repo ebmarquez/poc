@@ -1,19 +1,18 @@
 ---
 VLANS:
-  ID: 12
-  NAME: "TEST1"
-  SHUTDOWN: False
-  INTERFACE:
+  - ID: 12
+    NAME: "TEST1"
     SHUTDOWN: False
-    DESC: "Test 123"
-    IPV4:
-      ADDRESS: "192.168.1.1/24"
-VLANS:
-  ID: 13
-  NAME: "test2"
-  SHUTDOWN: True
-  INTERFACE:
+    INTERFACE:
+      SHUTDOWN: False
+      DESC: "Test 123"
+      IPV4:
+        ADDRESS: "192.168.1.1/24"
+  - ID: 13
+    NAME: "test2"
     SHUTDOWN: True
-    DESC: "test2 456"
-    IPV4:
-      ADDRESS: "10.1.2.3/30"
+    INTERFACE:
+      SHUTDOWN: True
+      DESC: "test2 456"
+      IPV4:
+        ADDRESS: "10.1.2.3/30"
