@@ -1,6 +1,6 @@
 ---
 VLANS:
-  - ID: 12
+  12:
     NAME: "TEST1"
     SHUTDOWN: False
     INTERFACE:
@@ -8,7 +8,7 @@ VLANS:
       DESC: "Test 123"
       IPV4:
         ADDRESS: "192.168.1.1/24"
-  - ID: 13
+  13:
     NAME: "test2"
     SHUTDOWN: True
     INTERFACE:
