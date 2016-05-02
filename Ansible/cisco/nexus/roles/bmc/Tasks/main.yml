@@ -3,6 +3,7 @@
   nxos_template:
     src: create_int_vlan.j2
     provider: "{{ cli }}"
+  with_dict: "{{ VLANS }}"
   register: output
 
 - name: debug
