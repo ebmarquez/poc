@@ -1,0 +1,28 @@
+{{#
+########################################
+Purpose: 
+Create a Switch Virtual Interface (SVI)
+
+Required Variables and Types
+item.key (int)
+item.NAME (string)
+item.value.INTERFACE.DESC (string)
+item.value.INTERFACE.SHUTDOWN (boolean)
+item.value.INTERFACE.IPV4.ADDRESS (string)
+########################################
+#}}
+
+feature interface-vlan
+
+}
+vlan {{ item.key }}
+#  name {{ item.NAME }}
+
+interface vlan{{ item.key }}
+description {{ item.value.INTERFACE.DESC }}
+{% if item.value.INTERFACE.SHUTDOWN %}
+  shutdown
+{% else %}
+  no shutdown
+{% endif %}
+ip address {{ item.value.INTERFACE.IPV4.ADDRESS }}
